@@ -20,8 +20,6 @@ Analysis:
   그래서 increment를 2로 하거나 i의 마지막 값을 절반으로 줄이고 for loop 내부에서 i에 2를 곱해주는 방법을 확인.
   
 '''C++
-class Solution {
-public:
     int arrayPairSum(vector<int>& nums) 
     {
         int total = 0;
@@ -32,5 +30,4 @@ public:
         }
         return total;
     }
-};
 '''
