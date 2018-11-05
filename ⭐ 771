@@ -15,3 +15,20 @@ Output: 0
 Analysis:
 
 1. string의 char을 하나하나 뜯어보려면 char CJ: J 와 같은 방법도 있지만, 걍 string을 array로 보고 숫자 for loop을 써줘도 된다.
+
+'''C++
+    int numJewelsInStones(string J, string S) 
+    {
+        int count = 0;
+        
+        for(char CS: S)
+        {
+            for(char CJ: J)
+            {
+                if(CJ == CS) count++;
+            }
+        }
+        
+        return count;
+    }
+'''
