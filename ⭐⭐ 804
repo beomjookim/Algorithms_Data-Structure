@@ -28,3 +28,27 @@ Analysis:
   - 중복되는 string을 자동으로 제거하는 unordered_set을 사용했다.
   - 이미 있는 string에 다른 string을 cascading하는 방법은 next += mors[]; 방법을 쓰면 간단하다.
   - 그리고 uset.size();을 return하면 된다.
+
+'''C++
+class Solution {
+public:
+    int uniqueMorseRepresentations(vector<string>& words) 
+    {
+        vector<string> mors = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+            
+        unordered_set<string> uset;
+        
+        for(string st: words)
+        {
+            string nest = "";
+            for(char c: st)
+            {
+                nest += mors[c-97];
+            }
+            uset.insert(nest);
+        }
+        
+        return uset.size();
+    }
+};
+'''
