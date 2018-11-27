@@ -1,6 +1,6 @@
+
 Given a string S that only contains "I" (increase) or "D" (decrease), let N = S.length.
 Return any permutation A of [0, 1, ..., N] such that for all i = 0, ..., N-1:
-
 If S[i] == "I", then A[i] < A[i+1]
 If S[i] == "D", then A[i] > A[i+1]
 
@@ -18,22 +18,23 @@ Output: [3,2,0,1]
 
 Note: 1 <= S.length <= 10000, S only contains characters "I" or "D".
 
+
+
 <Analysis>
-
-1. Mechanism에 대해 생각해보자. III나 DDD처럼 연속적으로 같은 것이 나오는 경우는 increment와 decrement가 각각 1이다.
-    그리고 DI의 경우는 가장 높은 수에서 가장 낮은 수로 넘어간다. ID의 경우는 반대로 가장 낮은 수에서 가장 높은 수로 넘어간다.
-    어레이의 index를 두 개 만들어 각각 가장 낮은 곳부터 하나씩 위로, 가장 높은 곳부터 하나씩 아래로 보내면 될 듯.
+1. 매커니즘을 생각해보자. 간단하게, I가 나오는 경우 남은 수 중 가장 작은 수를, D가 나오는 경우 가장 큰 수를 프린트한다.
 
 
+
+C++ code:
 vector diStringMatch(string S) 
 {
-    vector res;
-    if(S.size() == 0)
-    return res;
+    vector<int> res;
+    if(S.size() == 0) return res;
     
     int j = S.size();
+    int l = j;
     int k = 0;
-    for(int i =0; i<S.size(); ++i)
+    for(int i =0; i < l; ++i)
     {
         if(S[i] == 'I')
         {
@@ -45,8 +46,7 @@ vector diStringMatch(string S)
         {
           res.push_back(j); 
           --j; 
-        }
-            
+        }      
     }
 
     if(k < S.size()- j) res.push_back(k);    
